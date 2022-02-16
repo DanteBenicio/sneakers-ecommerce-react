@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
   html, body, #root {
     max-width: 100vw;
     min-height: 100vh;
+    font-size: 62.5%;
   }
 `;
 
