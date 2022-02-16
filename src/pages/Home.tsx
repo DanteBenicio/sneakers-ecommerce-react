@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import './App.css';
+import Button from '../components/Button';
+import {
+  ButtonGroup,
+  Container, Image, ProductImage,
+  ProductInfo, ProductOff,
+  ProductPreviousValue, ProductPrice, ProductQuantityWrapper, ProductValue, Wrapper,
+} from '../styles/Home.styles';
 
 function Home() {
   return (
