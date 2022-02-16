@@ -7,6 +7,8 @@ import Home from './pages/Home';
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Navbar />
       <Home />
     </ThemeProvider>
   </React.StrictMode>,
