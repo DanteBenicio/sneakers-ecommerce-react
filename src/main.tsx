@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './theme';
 import Home from './pages/Home';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <ThemeProvider theme={theme}>
+      <Home />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
