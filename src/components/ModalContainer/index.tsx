@@ -64,5 +64,9 @@ export default function ModalContainer() {
         </ImageList>
       </Wrapper>
     </Container>
+    );
+  }
+  return (
+    <span style={{ display: 'none' }} />
   );
 }
