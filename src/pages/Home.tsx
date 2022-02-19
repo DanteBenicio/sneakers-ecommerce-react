@@ -70,7 +70,11 @@ function Home() {
                 <img src="assets/icon-plus.svg" alt="" />
               </span>
             </ProductQuantityWrapper>
-            <Button text="Add to Cart" icon="assets" />
+            <Button
+              text="Add to Cart"
+              iconSrc="assets/icon-cart-white.svg"
+              addProductInCart={addProductInCart}
+            />
           </ButtonGroup>
         </ProductInfo>
       </Wrapper>
