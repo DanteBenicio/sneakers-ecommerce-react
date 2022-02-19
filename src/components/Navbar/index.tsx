@@ -5,6 +5,34 @@ import {
 } from './styles';
 
 export default function Navbar() {
+  const { images, setImages } = useContext(AppContext);
+  const [showCart, setShowCart] = useState<boolean>(false);
+  const [sneakersInCart, setSneakersInCart] = useState<ImagesType[]>([]);
+
+  useEffect(() => {
+    const sneakersIsInCart = images.filter((image) => image.isInCart);
+
+    setSneakersInCart(sneakersIsInCart);
+  }, [images]);
+
+  function ShowRenderSneakers() {
+    return (
+      <>
+        {sneakersInCart.map((sneaker) => (
+          <ProductInCart
+            imageSrc={sneaker.src}
+            quantity={sneaker.pairsQuantity}
+            sneakerName={sneaker.sneakerName}
+            sneakerValue={sneaker.value}
+            sneakerId={sneaker.id}
+            sneakersInCart={sneakersInCart}
+            setSneakersInCart={setSneakersInCart}
+          />
+        ))}
+      </>
+    );
+  }
+
   return (
     <Container>
       <Wrapper>
