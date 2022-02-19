@@ -28,7 +28,7 @@ export default function ModalContainer() {
   function showNextImage() {
     const [imageSelected] = images.filter((image) => image.selectedImage);
 
-    if (imageSelected.id + 1 <= 4) {
+    if (imageSelected.id + 1 < 4) {
       const nextImage = imageSelected.id + 1;
 
       handleShowModalWithImage(nextImage);
