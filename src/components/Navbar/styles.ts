@@ -1,4 +1,5 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+import { CartInfoType } from '../../types/navbar';
 
 export const Container = styled.header`
   max-width: 100vw;
@@ -88,13 +89,21 @@ const showCartInfo = keyframes`
   }
 `;
 
-export const CartInfo = styled.div`
-  display: none;
+export const CartInfo = styled('div')<CartInfoType>`
+  ${({ showCart }) => (showCart ? css`
+    animation: ${showCartInfo} 0.2s ease-in-out;
+  ` : css`
+    display: none;
+  `)};
+
   position: absolute;
   top: 160%;
-  left: -250%;
-  width: 300px;
+  left: -300%;
+  width: 350px;
   height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+  background-color: #fff;
 
   font-size: 1.6rem;
 
@@ -119,11 +128,6 @@ export const Cart = styled.span`
   font-size: 1.6rem;
   cursor: pointer;
   position: relative;
-
-  &:hover ~ ${CartInfo} {
-    display: block;
-    animation: ${showCartInfo} 0.2s forwards;
-  }
 
   span {
     position: absolute;

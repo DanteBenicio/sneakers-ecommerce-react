@@ -1,6 +1,13 @@
-import React from 'react';
+import React, {
+  useCallback, useContext, useEffect, useState,
+} from 'react';
+import { AppContext } from '../../context';
+import { ProductInfo } from '../../styles/Home.styles';
+import { ImagesType } from '../../types/context';
+import Button from '../Button';
+import ProductInCart from '../ProductInCart';
 import {
-  Avatar, AvatarContainer, Cart, CartInfo, Container, List, Logo,
+  Avatar, AvatarContainer, Cart, CartEmpty, CartInfo, Container, List, Logo,
   Wrapper, WrapperCartAvatar, WrapperLogoList,
 } from './styles';
 
@@ -49,14 +56,29 @@ export default function Navbar() {
         </WrapperLogoList>
 
         <WrapperCartAvatar>
-          <Cart>
+          <Cart onClick={() => setShowCart(!showCart)}>
             <img src="assets/icon-cart.svg" alt="cart" />
-            <span>1</span>
+            {sneakersInCart.length ? (
+              <span>{sneakersInCart.length}</span>
+            ) : (
+              ''
+            )}
           </Cart>
 
-          <CartInfo>
+          <CartInfo showCart={showCart}>
             <p>Cart</p>
-            <div>Your cart is empty</div>
+            {sneakersInCart.length
+              ? (
+                <>
+                  <ShowRenderSneakers />
+                  <div>
+                    <Button text="Checkout" buttonHeight="50px" />
+                  </div>
+                </>
+              )
+              : (
+                <CartEmpty>Your cart is empty</CartEmpty>
+              )}
           </CartInfo>
 
           <AvatarContainer>
