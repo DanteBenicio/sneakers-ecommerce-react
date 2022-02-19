@@ -1,15 +1,20 @@
-import { useState } from 'react';
+/* eslint-disable no-restricted-globals */
+import { useContext, useState } from 'react';
 import Button from '../components/Button';
+import { AppContext } from '../context';
+import { MinusIcon } from '../icons/icon-minus';
+import { PlusIcon } from '../icons/icon-plus';
 import {
   ButtonGroup,
-  Container, Image, ProductImage,
+  Container, Image, ImageItem, ProductImage,
   ProductInfo, ProductOff,
   ProductPreviousValue, ProductPrice, ProductQuantityWrapper, ProductValue, Wrapper,
 } from '../styles/Home.styles';
+import { ContextValue } from '../types/context';
 
 function Home() {
   const {
-    images, handleShowModalWithImage,
+    images, setImages, handleShowModalWithImage,
   } = useContext<ContextValue>(AppContext);
   const [quantityProduct, setQuantityProducts] = useState<number>(0);
 
