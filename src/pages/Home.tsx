@@ -31,7 +31,7 @@ function Home() {
     <Container>
       <Wrapper>
         <ProductImage>
-          <Image src="assets/image-product-1.jpg" alt="" />
+          <ShowProductImage />
           <ul>
             <li>
               <img src="assets/image-product-1-thumbnail.jpg" alt="" />
