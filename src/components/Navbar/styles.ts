@@ -101,7 +101,7 @@ export const CartInfo = styled.div`
   border-radius: 0.8rem;
   box-shadow: 0 0 4.0rem rgba(0, 0, 0, 0.180);
 
-  p {
+  > p:nth-child(1) {
     padding: 1.6rem;
     border-bottom: 1px solid #cbcbcb;
     font-weight: 700;
