@@ -8,6 +8,25 @@ import {
 } from '../styles/Home.styles';
 
 function Home() {
+  const {
+    images, handleShowModalWithImage,
+  } = useContext<ContextValue>(AppContext);
+  const [quantityProduct, setQuantityProducts] = useState<number>(0);
+
+  function verifyQuantityProducts(operator: unknown) {
+    if (operator === '+') {
+      setQuantityProducts((previousValue) => previousValue + 1);
+    }
+
+    if (operator === '-') {
+      if (quantityProduct > 0) {
+        setQuantityProducts((previousValue) => previousValue - 1);
+      }
+    }
+
+    return '';
+  }
+
   return (
     <Container>
       <Wrapper>
