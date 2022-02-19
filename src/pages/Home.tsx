@@ -62,8 +62,8 @@ function Home() {
           </ProductPrice>
           <ButtonGroup>
             <ProductQuantityWrapper>
-              <span>
-                <img src="assets/icon-minus.svg" alt="" />
+              <span onClick={() => verifyQuantityProducts('-')}>
+                <MinusIcon />
               </span>
               <span>{quantityProduct}</span>
               <span onClick={() => verifyQuantityProducts('+')}>
