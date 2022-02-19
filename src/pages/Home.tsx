@@ -27,6 +27,35 @@ function Home() {
     return '';
   }
 
+  function addProductInCart() {
+    const newImages = images.map((image) => {
+      if (image.selectedImage) {
+        return { ...image, isInCart: true, pairsQuantity: quantityProduct };
+      }
+
+      return image;
+    });
+
+    scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
+    setImages(newImages);
+  }
+
+  function ShowProductImage() {
+    const [imageSelected] = images.filter((image) => image.selectedImage);
+
+    if (!imageSelected) {
+      return <Image src="assets/image-product-1.jpg" alt="" />;
+    }
+
+    const formatSrcImageSelected = imageSelected.src.replace('-thumbnail', '');
+
+    return <Image src={formatSrcImageSelected} alt="" />;
+  }
+
   return (
     <Container>
       <Wrapper>
