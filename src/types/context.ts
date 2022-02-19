@@ -2,6 +2,10 @@ export type ImagesType = {
   src: string
   id: number
   selectedImage: boolean
+  isInCart: boolean
+  sneakerName: string
+  pairsQuantity: number
+  value: number
 }
 
 export type ContextValue = {
