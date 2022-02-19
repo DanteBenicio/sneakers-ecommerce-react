@@ -155,6 +155,13 @@ export const AvatarContainer = styled.div`
   }
 `;
 
+export const CartEmpty = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60%;
+`;
+
 export const Avatar = styled.img`
   object-fit: contain;
   width: 100%;
