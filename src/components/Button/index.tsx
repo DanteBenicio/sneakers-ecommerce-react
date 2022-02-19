@@ -1,12 +1,18 @@
-import React from 'react';
+import { ButtonProps } from '../../types/button';
+import { ButtonComponent } from './styles';
 
-type ButtonProps = {
-  text: string
-  icon: string
-}
-
-export default function Button({ text, icon }: ButtonProps) {
+export default function Button({
+  text, iconSrc, buttonWidth, addProductInCart, buttonHeight,
+}: ButtonProps) {
   return (
-    <button type="button">{text}</button>
+    <ButtonComponent
+      type="button"
+      style={{ maxWidth: buttonWidth || '100%' }}
+      onClick={addProductInCart}
+      buttonHeight={buttonHeight}
+    >
+      <img src={iconSrc} alt="" />
+      {text}
+    </ButtonComponent>
   );
 }
