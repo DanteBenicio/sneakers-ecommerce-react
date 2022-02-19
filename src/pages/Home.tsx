@@ -33,18 +33,15 @@ function Home() {
         <ProductImage>
           <ShowProductImage />
           <ul>
-            <li>
-              <img src="assets/image-product-1-thumbnail.jpg" alt="" />
-            </li>
-            <li>
-              <img src="assets/image-product-2-thumbnail.jpg" alt="" />
-            </li>
-            <li>
-              <img src="assets/image-product-3-thumbnail.jpg" alt="" />
-            </li>
-            <li>
-              <img src="assets/image-product-4-thumbnail.jpg" alt="" />
-            </li>
+            {images.map((image) => (
+              <ImageItem
+                key={image.src}
+                onClick={() => handleShowModalWithImage(image.id)}
+                imgSelected={image.selectedImage}
+              >
+                <img src={image.src} alt="" />
+              </ImageItem>
+            ))}
           </ul>
         </ProductImage>
         <ProductInfo>
