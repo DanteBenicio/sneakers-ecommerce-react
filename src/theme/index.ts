@@ -1,4 +1,6 @@
-export const theme = {
+import { ThemeProps } from '../types/theme';
+
+export const theme: ThemeProps = {
   colors: {
     primary: 'hsl(26, 100%, 55%)',
     secondary: 'hsl(25, 100%, 94%)',
