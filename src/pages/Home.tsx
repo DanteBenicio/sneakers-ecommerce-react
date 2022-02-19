@@ -65,9 +65,9 @@ function Home() {
               <span>
                 <img src="assets/icon-minus.svg" alt="" />
               </span>
-              <span>0</span>
-              <span>
-                <img src="assets/icon-plus.svg" alt="" />
+              <span>{quantityProduct}</span>
+              <span onClick={() => verifyQuantityProducts('+')}>
+                <PlusIcon />
               </span>
             </ProductQuantityWrapper>
             <Button
