@@ -1,7 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { ImageItemProps } from '../../types/home-styles';
+import { ContainerProps } from '../../types/modal-container-styles';
 
-export const Container = styled.div`
-  display: flex;
+export const Container = styled('div')<ContainerProps>`
+  display: ${({ showModal }) => (showModal ? 'flex' : 'none')};
   justify-content: center;
   align-items: center;
 
@@ -13,11 +15,9 @@ export const Container = styled.div`
   position: fixed;
   z-index: 999;
   background-color: rgba(0,0,0,0.750);
-  /* padding: 20rem; */
 `;
 
 export const Wrapper = styled.main`
-  /* position: absolute; */
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
@@ -33,37 +33,79 @@ export const ImageList = styled.ul`
   width: 100%;
   gap: 2.4rem;
   padding: 0 4.0rem;
+`;
 
-  li {
-    flex: 1;
-    border-radius: 1.6rem;
-    position: relative;
+export const ImageItem = styled('li')<ImageItemProps>`
+  flex: 1;
+  border-radius: 1.6rem;
+  position: relative;
+  border: 2px solid transparent;
+  overflow: hidden;
+
+  ${({ imgSelected }) => (imgSelected ? css`
+    border: 2px solid ${({ theme }) => theme.colors.primary};
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255,0.4);
+    }
+  ` : '')};
+
+  &:hover {
     border: 2px solid transparent;
-    overflow: hidden;
+    border-color: ${({ theme }) => theme.colors.primary};
+    cursor: pointer;
+  }
 
-    &:hover {
-        border: 2px solid transparent;
-        border-color: ${({ theme }) => theme.colors.primary};
-        cursor: pointer;
-      }
+  &:hover::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255,0.2);
+  }
 
-      &:hover::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255, 255, 255,0.4);
-      }
-
-      img {
-        object-fit: cover;
-        width: 100%;
-      }
+  img {
+    object-fit: cover;
+    width: 100%;
   }
 `;
 
 export const ImageWrapper = styled.div`
   position: relative;
+  padding-top: 6.4rem;
+`;
+
+export const CloseIconWrapper = styled.span`
+  display: flex;
+  position: absolute;
+  top: 2.0rem;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  > svg {
+    width: 30px;
+    height: 30px;
+
+    path {
+      transform: scale(1.9);
+    }
+
+  }
+
+  &:hover svg path{
+    transition: fill 0.2s ease-in-out;
+    fill: ${({ theme }) => theme.colors.primary};
+  }
 `;
 
 export const PreviousImage = styled.span`
@@ -72,9 +114,10 @@ export const PreviousImage = styled.span`
     align-items: center;
     position: absolute;
     z-index: 999;
-    top: 50%;
+    top: 55%;
     left: -2%;
-    transform: translateY(-50%);
+    transform: translateY(-55%);
+    cursor: pointer;
 
     width: 40px;
     height: 40px;
@@ -90,10 +133,8 @@ export const PreviousImage = styled.span`
 `;
 
 export const NextImage = styled(PreviousImage)`
-  top: 50%;
   padding: 1rem 1rem 1rem 1.2rem;
   left: 94%;
   transform: translateX(-100%);
-  /* right: -2%; */
-  transform: translateY(-50%);
+  transform: translateY(-55%);
 `;
