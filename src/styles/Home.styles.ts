@@ -1,8 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { ImageItemProps } from '../types/home-styles';
 
 export const Container = styled.section`
   max-width: 100vw;
-  min-height: 100vh;
+  min-height: 50vh;
   font-size: 1.6rem;
   display: flex;
   justify-content: center;
@@ -29,33 +30,44 @@ export const ProductImage = styled.div`
     width: 100%;
     gap: 1.6rem;
     margin-top: 1.6rem;
+  }
+`;
 
-    li {
-      flex: 1;
-      border-radius: 1.6rem;
-      position: relative;
-      border: 2px solid transparent;
-      overflow: hidden;
+export const ImageItem = styled('li')<ImageItemProps>`
+  flex: 1;
+  border-radius: 1.6rem;
+  position: relative;
+  border: 2px solid transparent;
+  overflow: hidden;
+  ${({ imgSelected }) => (imgSelected ? css`
+    border: 2px solid ${({ theme }) => theme.colors.primary};
+    cursor: pointer;
 
-      &:hover {
-        border: 2px solid transparent;
-        border-color: ${({ theme }) => theme.colors.primary};
-        cursor: pointer;
-      }
-
-      &:hover::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255, 255, 255,0.4);
-      }
-
-      img {
-        object-fit: cover;
-        width: 100%;
-      }
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255,0.4);
     }
+  ` : '')}
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.primary};
+    cursor: pointer;
+  }
+
+  &:hover::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255,0.2);
+  }
+
+  img {
+    object-fit: cover;
+    width: 100%;
   }
 `;
 
@@ -80,7 +92,7 @@ export const ProductInfo = styled.div`
   }
 
   > h1 {
-    font-size: 4.0rem;
+    font-size: clamp(2.4rem, 4vw, 4.0rem);
     font-weight: 700;
     margin-bottom: 3.2rem;
   }
@@ -101,7 +113,7 @@ export const ProductPrice = styled.div`
 
 export const ProductValue = styled.span`
   display: inline-block;
-  font-size: 3.2rem;
+  font-size: clamp(2.8rem, 3vw, 3.2rem);
   font-weight: 700;
   margin-right: 1.6rem;
 `;
@@ -131,6 +143,7 @@ export const ButtonGroup = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1.6rem;
 `;
 
 export const ProductQuantityWrapper = styled.div`
