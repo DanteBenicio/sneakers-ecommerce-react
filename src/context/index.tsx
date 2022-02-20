@@ -90,6 +90,8 @@ export default function ContextProvider({ children }: ContextProviderProps) {
       images,
       setImages,
       handleShowModalWithImage,
+      burger,
+      setBurger,
     }}
     >
       {children}
