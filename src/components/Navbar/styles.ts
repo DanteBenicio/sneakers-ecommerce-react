@@ -25,9 +25,34 @@ export const WrapperLogoList = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  justify-content: space-between;
   height: 100%;
   gap: 4.0rem;
+
+  > span:nth-child(1) {
+    display: none;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+
+    > svg {
+      width: 100%;
+      height: 100%;
+
+      path {
+        transform: scale(1.6);
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    > span:nth-child(1) {
+    display: inline-block;
+  }
+
+  @media screen and (max-width: 450px) {
+    gap: 1.6rem;
+  }
+}
 `;
 
 export const WrapperCartAvatar = styled.div`
@@ -36,6 +61,7 @@ export const WrapperCartAvatar = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 2.4rem;
+  margin-left: 1.6rem;
 `;
 
 export const Logo = styled.img`
@@ -48,7 +74,6 @@ export const List = styled.ul`
   align-items: center;
   flex: 1;
   height: 100%;
-  /* justify-content: center; */
   list-style: none;
   gap: 2.4rem;
 
@@ -72,6 +97,10 @@ export const List = styled.ul`
   li:hover {
     color: ${({ theme }) => theme.colors.veryVarkBlue};
     border-bottom: 3px solid ${({ theme }) => theme.colors.primary};
+  }
+
+  @media screen and (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -98,12 +127,13 @@ export const CartInfo = styled('div')<CartInfoType>`
 
   position: absolute;
   top: 160%;
-  left: -300%;
+  left: -350%;
   width: 350px;
   height: 200px;
   overflow-y: auto;
   z-index: 100;
   background-color: #fff;
+  margin: 0 3rem;
 
   font-size: 1.6rem;
 
