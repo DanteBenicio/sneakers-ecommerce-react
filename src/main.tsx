@@ -14,6 +14,7 @@ ReactDOM.render(
       <GlobalStyle />
       <ContextProvider>
         <ModalContainer />
+        <Sidebar />
         <Navbar />
         <Home />
       </ContextProvider>
