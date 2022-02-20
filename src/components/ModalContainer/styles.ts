@@ -15,6 +15,10 @@ export const Container = styled('div')<ContainerProps>`
   position: fixed;
   z-index: 999;
   background-color: rgba(0,0,0,0.750);
+
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
 `;
 
 export const Wrapper = styled.main`
