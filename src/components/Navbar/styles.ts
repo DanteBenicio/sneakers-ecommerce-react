@@ -175,6 +175,14 @@ export const CartEmpty = styled.p`
   justify-content: center;
   align-items: center;
   height: 60%;
+
+  @media screen and (max-width: 450px) {
+    width: 316px;
+  }
+
+  @media screen and (max-width: 350px) {
+    width: 277.59px;
+  }
 `;
 
 export const Avatar = styled.img`
