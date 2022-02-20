@@ -80,7 +80,7 @@ export default function ContextProvider({ children }: ContextProviderProps) {
     });
 
     if (handleShowModal) {
-    setModal(true);
+      setModal(true);
     }
     setImages(newImages);
   }
