@@ -80,7 +80,7 @@ function Home() {
             {images.map((image) => (
               <ImageItem
                 key={image.src}
-                onClick={() => handleShowModalWithImage(image.id)}
+                onClick={() => handleShowModalWithImage(image.id, true)}
                 imgSelected={image.selectedImage}
               >
                 <img src={image.src} alt="" />
