@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import GlobalStyle from './styles/global-style';
 import ModalContainer from './components/ModalContainer';
 import ContextProvider from './context';
+import Sidebar from './components/Sidebar';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,6 +15,7 @@ ReactDOM.render(
       <GlobalStyle />
       <ContextProvider>
         <ModalContainer />
+        <Sidebar />
         <Navbar />
         <Home />
       </ContextProvider>

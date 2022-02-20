@@ -2,7 +2,7 @@ import React, {
   useCallback, useContext, useEffect, useState,
 } from 'react';
 import { AppContext } from '../../context';
-import { ProductInfo } from '../../styles/Home.styles';
+import { MenuIcon } from '../../icons/icon-menu';
 import { ImagesType } from '../../types/context';
 import Button from '../Button';
 import ProductInCart from '../ProductInCart';
@@ -12,7 +12,9 @@ import {
 } from './styles';
 
 export default function Navbar() {
-  const { images, setImages } = useContext(AppContext);
+  const {
+    images, setBurger, burger, setImages,
+  } = useContext(AppContext);
   const [showCart, setShowCart] = useState<boolean>(false);
   const [sneakersInCart, setSneakersInCart] = useState<ImagesType[]>([]);
 
@@ -34,6 +36,8 @@ export default function Navbar() {
             sneakerId={sneaker.id}
             sneakersInCart={sneakersInCart}
             setSneakersInCart={setSneakersInCart}
+            images={images}
+            setImages={setImages}
           />
         ))}
       </>
@@ -44,6 +48,10 @@ export default function Navbar() {
     <Container>
       <Wrapper>
         <WrapperLogoList>
+          <span onClick={() => setBurger(!burger)}>
+            <MenuIcon />
+          </span>
+
           <Logo src="assets/logo.svg" alt="logo" />
 
           <List>

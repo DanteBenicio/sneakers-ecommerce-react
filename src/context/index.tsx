@@ -17,7 +17,9 @@ const initialValue = {
     value: 0,
   }],
   setImages: (images: ImagesType[]) => {},
-  handleShowModalWithImage: (id: number) => {},
+  handleShowModalWithImage: (id: number, handleShowModal: boolean) => {},
+  burger: false,
+  setBurger: (burger: boolean) => {},
 };
 
 export const AppContext = createContext<ContextValue>(initialValue);
@@ -62,8 +64,9 @@ export default function ContextProvider({ children }: ContextProviderProps) {
       value: 125.00,
     },
   ]);
+  const [burger, setBurger] = useState<boolean>(false);
 
-  function handleShowModalWithImage(id: number) {
+  function handleShowModalWithImage(id: number, handleShowModal: boolean) {
     const [imageSelected] = images.filter((image) => image.id === id);
 
     const newImages = images.map((image) => {
@@ -76,7 +79,9 @@ export default function ContextProvider({ children }: ContextProviderProps) {
       return image;
     });
 
-    setModal(true);
+    if (handleShowModal) {
+      setModal(true);
+    }
     setImages(newImages);
   }
 
@@ -87,6 +92,8 @@ export default function ContextProvider({ children }: ContextProviderProps) {
       images,
       setImages,
       handleShowModalWithImage,
+      burger,
+      setBurger,
     }}
     >
       {children}

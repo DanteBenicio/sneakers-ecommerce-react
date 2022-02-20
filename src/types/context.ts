@@ -10,10 +10,12 @@ export type ImagesType = {
 
 export type ContextValue = {
   modal: boolean
+  burger: boolean
   images: ImagesType[]
   setModal: (modal: any) => void
   setImages: (images: any) => void
-  handleShowModalWithImage: (id: number) => void
+  setBurger: (burger: boolean) => void
+  handleShowModalWithImage: (id: number, handleShowModal: boolean) => void
 }
 
 export type ContextProviderProps = {

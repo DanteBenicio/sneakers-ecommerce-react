@@ -3,10 +3,12 @@ import { useContext, useState } from 'react';
 import Button from '../components/Button';
 import { AppContext } from '../context';
 import { MinusIcon } from '../icons/icon-minus';
+import { NextIcon } from '../icons/icon-next';
 import { PlusIcon } from '../icons/icon-plus';
+import { PreviousIcon } from '../icons/icon-previous';
 import {
   ButtonGroup,
-  Container, Image, ImageItem, ProductImage,
+  Container, Image, ImageContainer, ImageItem, NextIconWrapper, PreviousIconWrapper, ProductImage,
   ProductInfo, ProductOff,
   ProductPreviousValue, ProductPrice, ProductQuantityWrapper, ProductValue, Wrapper,
 } from '../styles/Home.styles';
@@ -47,18 +49,68 @@ function Home() {
     });
 
     setImages(newImages);
+    setQuantityProducts(0);
   }
 
   function ShowProductImage() {
     const [imageSelected] = images.filter((image) => image.selectedImage);
+    const formatedSrcImages = images.map((image) => image.src.replace('-thumbnail', ''));
+
+    function showPreviousImage() {
+      if (!imageSelected) {
+        handleShowModalWithImage(0, false);
+
+        return '';
+      }
+
+      handleShowModalWithImage(imageSelected.id > 0
+        ? imageSelected.id - 1
+        : imageSelected.id, false);
+
+      return '';
+    }
+
+    function showNextImage() {
+      if (!imageSelected) {
+        handleShowModalWithImage(1, false);
+
+        return '';
+      }
+
+      handleShowModalWithImage(imageSelected.id < 3
+        ? imageSelected.id + 1
+        : imageSelected.id, false);
+
+      return '';
+    }
 
     if (!imageSelected) {
-      return <Image src="assets/image-product-1.jpg" alt="" />;
+      return (
+        <ImageContainer>
+          <PreviousIconWrapper>
+            <PreviousIcon />
+          </PreviousIconWrapper>
+          <Image src={formatedSrcImages[0]} alt="" />
+          <NextIconWrapper onClick={showNextImage}>
+            <NextIcon />
+          </NextIconWrapper>
+        </ImageContainer>
+      );
     }
 
     const formatSrcImageSelected = imageSelected.src.replace('-thumbnail', '');
 
-    return <Image src={formatSrcImageSelected} alt="" />;
+    return (
+      <ImageContainer>
+        <PreviousIconWrapper onClick={showPreviousImage}>
+          <PreviousIcon />
+        </PreviousIconWrapper>
+        <Image src={formatSrcImageSelected} alt="" />
+        <NextIconWrapper onClick={showNextImage}>
+          <NextIcon />
+        </NextIconWrapper>
+      </ImageContainer>
+    );
   }
 
   return (
@@ -70,7 +122,7 @@ function Home() {
             {images.map((image) => (
               <ImageItem
                 key={image.src}
-                onClick={() => handleShowModalWithImage(image.id)}
+                onClick={() => handleShowModalWithImage(image.id, true)}
                 imgSelected={image.selectedImage}
               >
                 <img src={image.src} alt="" />
