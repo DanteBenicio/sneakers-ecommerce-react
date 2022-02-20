@@ -64,6 +64,7 @@ export default function ContextProvider({ children }: ContextProviderProps) {
       value: 125.00,
     },
   ]);
+  const [burger, setBurger] = useState<boolean>(false);
 
   function handleShowModalWithImage(id: number) {
     const [imageSelected] = images.filter((image) => image.id === id);
