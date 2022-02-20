@@ -17,7 +17,9 @@ const initialValue = {
     value: 0,
   }],
   setImages: (images: ImagesType[]) => {},
-  handleShowModalWithImage: (id: number) => {},
+  handleShowModalWithImage: (id: number, handleShowModal: boolean) => {},
+  burger: false,
+  setBurger: (burger: boolean) => {},
 };
 
 export const AppContext = createContext<ContextValue>(initialValue);
