@@ -122,6 +122,17 @@ export const CartInfo = styled('div')<CartInfoType>`
     align-items: center;
     padding: 1.6rem;
   }
+
+  @media screen and (max-width: 450px) {
+    width: 310px;
+    left: -240%;
+    margin: 0 1rem;
+  }
+
+  @media screen and (max-width: 350px) {
+    left: -220%;
+    width: 290px;
+  }
 `;
 
 export const Cart = styled.span`
