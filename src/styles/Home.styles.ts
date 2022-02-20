@@ -9,6 +9,10 @@ export const Container = styled.section`
   justify-content: center;
   align-items: center;
   padding: 1.6rem;
+
+  @media screen and (max-width: 450px) {
+    padding: 0;
+  }
 `;
 
 export const Wrapper = styled.main`
@@ -18,6 +22,11 @@ export const Wrapper = styled.main`
   max-width: 100%;
   width: 100%;
   gap: 5.6rem;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    gap: 1.6rem;
+  }
 `;
 
 export const ProductImage = styled.div`
@@ -30,6 +39,71 @@ export const ProductImage = styled.div`
     width: 100%;
     gap: 1.6rem;
     margin-top: 1.6rem;
+  }
+
+  @media screen and (max-width: 700px) {
+    ul {
+      display: none;
+    }
+  }
+`;
+
+export const ImageContainer = styled.div`
+  position: relative;
+
+  @media screen and (max-width: 700px) {
+    width: 100%;
+  }
+`;
+
+export const NextIconWrapper = styled.span`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  width: 4.0rem;
+  height: 4.0rem;
+  border-radius: 50%;
+  background-color: white;
+  overflow: hidden;
+  right: 2%;
+  cursor: pointer;
+
+  > svg {
+    width: 4.0rem;
+    height: 4.0rem;
+    padding-top: 1.0rem;
+    padding-left: 1.4rem;
+  }
+
+  @media screen and (max-width: 700px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const PreviousIconWrapper = styled.span`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  width: 4.0rem;
+  height: 4.0rem;
+  background-color: white;
+  border-radius: 50%;
+  left: 2%;
+  cursor: pointer;
+
+  > svg {
+    width: 4.0rem;
+    height: 4.0rem;
+    padding-top: 1.0rem;
+    padding-left: 1.2rem;
+  }
+
+  @media screen and (max-width: 700px) {
+    display: inline-block;
   }
 `;
 
@@ -75,6 +149,10 @@ export const Image = styled.img`
   object-fit: contain;
   width: 100%;
   border-radius: 1.6rem;
+
+  @media screen and (max-width: 450px) {
+    border-radius: 0;
+  }
 `;
 
 export const ProductInfo = styled.div`
@@ -135,15 +213,28 @@ export const ProductPreviousValue = styled.s`
   display: block;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.darkGrayishBlue};
+
+  @media screen and (max-width: 450px) {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 `;
 
 export const ButtonGroup = styled.div`
   width: 100%;
-  height: 50px;
+  height: 5.0rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1.6rem;
+
+  @media screen and (max-width: 450px) {
+    flex-direction: column;
+    height: 11.8rem;
+  }
 `;
 
 export const ProductQuantityWrapper = styled.div`
@@ -163,5 +254,10 @@ export const ProductQuantityWrapper = styled.div`
     /* width: 50px; */
     line-height: 100%;
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 450px) {
+    width: 100%;
+    gap: 1.6rem;
   }
 `;

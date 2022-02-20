@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100vw;
     min-height: 100vh;
     font-size: 62.5%;
-    /* position: relative; */
+    overflow-x: hidden;
   }
 `;
 
