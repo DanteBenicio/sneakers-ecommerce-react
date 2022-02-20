@@ -64,9 +64,7 @@ export const WrapperCartAvatar = styled.div`
   margin-left: 1.6rem;
 `;
 
-export const Logo = styled.img`
-
-`;
+export const Logo = styled.img``;
 
 export const List = styled.ul`
   font-size: 1.6rem;
