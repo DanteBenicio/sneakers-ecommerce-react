@@ -58,7 +58,17 @@ function Home() {
 
     const formatSrcImageSelected = imageSelected.src.replace('-thumbnail', '');
 
-    return <Image src={formatSrcImageSelected} alt="" />;
+    return (
+      <ImageContainer>
+        <PreviousIconWrapper onClick={showPreviousImage}>
+          <PreviousIcon />
+        </PreviousIconWrapper>
+        <Image src={formatSrcImageSelected} alt="" />
+        <NextIconWrapper onClick={showNextImage}>
+          <NextIcon />
+        </NextIconWrapper>
+      </ImageContainer>
+    );
   }
 
   return (
