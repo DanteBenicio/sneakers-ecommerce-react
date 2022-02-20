@@ -10,6 +10,7 @@ export type ImagesType = {
 
 export type ContextValue = {
   modal: boolean
+  burger: boolean
   images: ImagesType[]
   setModal: (modal: any) => void
   setImages: (images: any) => void
