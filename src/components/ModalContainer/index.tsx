@@ -26,7 +26,7 @@ export default function ModalContainer() {
     if (imageSelected.id - 1 > 0) {
       const previousImage = imageSelected.id - 1;
 
-      handleShowModalWithImage(previousImage);
+      handleShowModalWithImage(previousImage, true);
     }
   }
 
@@ -36,7 +36,7 @@ export default function ModalContainer() {
     if (imageSelected.id + 1 < 4) {
       const nextImage = imageSelected.id + 1;
 
-      handleShowModalWithImage(nextImage);
+      handleShowModalWithImage(nextImage, true);
     }
   }
 
@@ -59,7 +59,7 @@ export default function ModalContainer() {
           <ImageList>
             {images.map((image) => (
               <ImageItem
-                onClick={() => handleShowModalWithImage(image.id)}
+                onClick={() => handleShowModalWithImage(image.id, true)}
                 imgSelected={image.selectedImage}
                 key={image.src}
               >
