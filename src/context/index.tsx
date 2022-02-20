@@ -66,7 +66,7 @@ export default function ContextProvider({ children }: ContextProviderProps) {
   ]);
   const [burger, setBurger] = useState<boolean>(false);
 
-  function handleShowModalWithImage(id: number) {
+  function handleShowModalWithImage(id: number, handleShowModal: boolean) {
     const [imageSelected] = images.filter((image) => image.id === id);
 
     const newImages = images.map((image) => {
