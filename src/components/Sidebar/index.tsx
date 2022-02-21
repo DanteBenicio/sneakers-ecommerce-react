@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { AppContext } from '../../context';
 import { CloseIcon } from '../../icons/icon-close';
 import {
@@ -8,7 +8,7 @@ import {
 export default function Sidebar() {
   const { burger, setBurger } = useContext(AppContext);
 
-  return (
+  return useMemo(() => (
     <Container burgerActive={burger}>
       <MenuCloseIconContainer>
         <CloseIconWrapper onClick={() => setBurger(!burger)}>
@@ -24,5 +24,5 @@ export default function Sidebar() {
         <li>Contact</li>
       </List>
     </Container>
-  );
+  ), [burger]);
 }

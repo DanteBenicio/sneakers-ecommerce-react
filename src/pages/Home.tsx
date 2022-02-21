@@ -1,5 +1,7 @@
 /* eslint-disable no-restricted-globals */
-import { useContext, useState } from 'react';
+import {
+  useCallback, useContext, useMemo, useState,
+} from 'react';
 import Button from '../components/Button';
 import { AppContext } from '../context';
 import { MinusIcon } from '../icons/icon-minus';
@@ -52,7 +54,7 @@ function Home() {
     setQuantityProducts(0);
   }
 
-  function ShowProductImage() {
+  const ShowProductImage = useCallback(() => {
     const [imageSelected] = images.filter((image) => image.selectedImage);
     const formatedSrcImages = images.map((image) => image.src.replace('-thumbnail', ''));
 
@@ -111,24 +113,28 @@ function Home() {
         </NextIconWrapper>
       </ImageContainer>
     );
-  }
+  }, [images]);
 
   return (
     <Container>
       <Wrapper>
         <ProductImage>
-          <ShowProductImage />
-          <ul>
-            {images.map((image) => (
-              <ImageItem
-                key={image.src}
-                onClick={() => handleShowModalWithImage(image.id, true)}
-                imgSelected={image.selectedImage}
-              >
-                <img src={image.src} alt="" />
-              </ImageItem>
-            ))}
-          </ul>
+          {useMemo(() => (
+            <>
+              <ShowProductImage />
+              <ul>
+                {images.map((image) => (
+                  <ImageItem
+                    key={image.src}
+                    onClick={() => handleShowModalWithImage(image.id, true)}
+                    imgSelected={image.selectedImage}
+                  >
+                    <img src={image.src} alt="" />
+                  </ImageItem>
+                ))}
+              </ul>
+            </>
+          ), [images])}
         </ProductImage>
         <ProductInfo>
           <span>Sneaker Company</span>

@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import {
-  createContext, useState,
+  createContext, useCallback, useState,
 } from 'react';
 import { ContextProviderProps, ContextValue, ImagesType } from '../types/context';
 
@@ -66,7 +66,7 @@ export default function ContextProvider({ children }: ContextProviderProps) {
   ]);
   const [burger, setBurger] = useState<boolean>(false);
 
-  function handleShowModalWithImage(id: number, handleShowModal: boolean) {
+  const handleShowModalWithImage = useCallback((id, handleShowModal) => {
     const [imageSelected] = images.filter((image) => image.id === id);
 
     const newImages = images.map((image) => {
@@ -83,7 +83,7 @@ export default function ContextProvider({ children }: ContextProviderProps) {
       setModal(true);
     }
     setImages(newImages);
-  }
+  }, [images]);
 
   return (
     <AppContext.Provider value={{

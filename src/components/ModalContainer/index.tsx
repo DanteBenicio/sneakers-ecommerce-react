@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { CloseIcon } from '../../icons/icon-close';
 import { AppContext } from '../../context';
 import {
@@ -23,7 +23,7 @@ export default function ModalContainer() {
   function showPreviousImage() {
     const [imageSelected] = images.filter((image) => image.selectedImage);
 
-    if (imageSelected.id - 1 > 0) {
+    if (imageSelected.id - 1 >= 0) {
       const previousImage = imageSelected.id - 1;
 
       handleShowModalWithImage(previousImage, true);
@@ -41,7 +41,7 @@ export default function ModalContainer() {
   }
 
   if (modal) {
-    return (
+    return useMemo(() => (
       <Container showModal={modal}>
         <Wrapper>
           <ImageWrapper>
@@ -69,7 +69,7 @@ export default function ModalContainer() {
           </ImageList>
         </Wrapper>
       </Container>
-    );
+    ), [images]);
   }
   return (
     <span style={{ display: 'none' }} />
